@@ -1,4 +1,6 @@
+package br.edu.infnet.matheustavaresgameapi.domain;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class GameCopy {
@@ -6,7 +8,20 @@ public class GameCopy {
     private String gameTitle;
     private LocalDate ownedSinceDate;
     private String player;
+    private BigDecimal rentalPrice;
     private boolean isForRental;
+    private int maxRentalDays;
+
+    public GameCopy(Integer id, String gameTitle, LocalDate ownedSinceDate, String player, BigDecimal rentalPrice,
+            boolean isForRental, int maxRentalDays) {
+        this.id = id;
+        this.gameTitle = gameTitle;
+        this.ownedSinceDate = ownedSinceDate;
+        this.player = player;
+        this.rentalPrice = rentalPrice;
+        this.isForRental = isForRental;
+        this.maxRentalDays = maxRentalDays;
+    }
 
     public Integer getId() {
         return id;
@@ -37,6 +52,22 @@ public class GameCopy {
     }
     public void setForRental(boolean isForRental) {
         this.isForRental = isForRental;
+    }
+
+    public BigDecimal getRentalPrice() {
+        return rentalPrice;
+    }
+
+    public void setRentalPrice(BigDecimal rentalPrice) {
+        this.rentalPrice = rentalPrice;
+    }
+
+    public int getMaxRentalDays() {
+        return maxRentalDays;
+    }
+
+    public void setMaxRentalDays(int maxRentalDays) {
+        this.maxRentalDays = maxRentalDays;
     }
 
     
