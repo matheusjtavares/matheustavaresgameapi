@@ -88,7 +88,7 @@ public class RentalOrderTest {
     @Test
     @DisplayName("Must prevent set when duplicates are added to rental")
     void mustPreventSet_whenDuplicatedCopiesAreAddedToRentalCart(){
-        GameCopy gameCopy = new GameCopy(1, "Final Fantasy",LocalDate.now(),"Matheus", new BigDecimal(10), false,10);
+        GameCopy gameCopy = new GameCopy(1, "Final Fantasy",LocalDate.now(),"Matheus", new BigDecimal(10), true,10);
         List<GameCopy> rentalCart = new ArrayList<>();
         rentalCart.add(gameCopy);
         rentalCart.add(gameCopy);

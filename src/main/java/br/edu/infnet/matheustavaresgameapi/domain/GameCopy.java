@@ -2,6 +2,7 @@ package br.edu.infnet.matheustavaresgameapi.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class GameCopy {
     private Integer id;
@@ -69,6 +70,22 @@ public class GameCopy {
     public void setMaxRentalDays(int maxRentalDays) {
         this.maxRentalDays = maxRentalDays;
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // same reference
+        if (o == null || getClass() != o.getClass()) return false;
+        GameCopy gameCopy = (GameCopy) o;
+        return isForRental == gameCopy.isForRental &&
+               maxRentalDays == gameCopy.maxRentalDays &&
+               Objects.equals(id, gameCopy.id) &&
+               Objects.equals(gameTitle, gameCopy.gameTitle) &&
+               Objects.equals(ownedSinceDate, gameCopy.ownedSinceDate) &&
+               Objects.equals(player, gameCopy.player) &&
+               Objects.equals(rentalPrice, gameCopy.rentalPrice);
+    }
 
-    
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, gameTitle, ownedSinceDate, player, rentalPrice, isForRental, maxRentalDays);
+    }
 }

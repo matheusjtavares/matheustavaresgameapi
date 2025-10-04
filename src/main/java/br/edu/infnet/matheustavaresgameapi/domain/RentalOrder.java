@@ -1,6 +1,7 @@
 package br.edu.infnet.matheustavaresgameapi.domain;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RentalOrder {
@@ -12,11 +13,20 @@ public class RentalOrder {
     }
 
     public void setRentalCart(List<GameCopy> rentalCart) {
-        this.rentalCart = rentalCart;
+        this.rentalCart = new ArrayList<GameCopy>();
+        for (GameCopy gameCopy : rentalCart) {
+            if (gameCopy.getMaxRentalDays()>=rentalDays && gameCopy.isForRental()
+                && !this.rentalCart.contains(gameCopy)){
+                this.rentalCart.add(gameCopy);
+            } 
+        }
     }
     public BigDecimal getTotalRentalPrice(){
-        return null;
-
+        BigDecimal totalPrice = new BigDecimal(0);
+        for (GameCopy gameCopy : rentalCart) {
+            totalPrice = totalPrice.add(gameCopy.getRentalPrice());
+        }
+        return totalPrice;
     }
 
     public int getRentalDays() {
