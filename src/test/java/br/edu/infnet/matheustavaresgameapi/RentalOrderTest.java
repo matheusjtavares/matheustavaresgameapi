@@ -86,7 +86,7 @@ public class RentalOrderTest {
         assertEquals(expectedRentalCart,rentalOrder.getRentalCart(),"Rental Cart Must be empty");
     }
     @Test
-    @DisplayName("Must prevent set when not available for rental")
+    @DisplayName("Must prevent set when duplicates are added to rental")
     void mustPreventSet_whenDuplicatedCopiesAreAddedToRentalCart(){
         GameCopy gameCopy = new GameCopy(1, "Final Fantasy",LocalDate.now(),"Matheus", new BigDecimal(10), false,10);
         List<GameCopy> rentalCart = new ArrayList<>();
