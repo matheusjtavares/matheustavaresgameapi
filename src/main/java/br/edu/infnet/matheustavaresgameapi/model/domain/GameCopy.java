@@ -1,4 +1,4 @@
-package br.edu.infnet.matheustavaresgameapi.domain;
+package br.edu.infnet.matheustavaresgameapi.model.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

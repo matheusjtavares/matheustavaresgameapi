@@ -10,8 +10,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import br.edu.infnet.matheustavaresgameapi.domain.GameCopy;
-import br.edu.infnet.matheustavaresgameapi.domain.RentalOrder;
+import br.edu.infnet.matheustavaresgameapi.model.domain.GameCopy;
+import br.edu.infnet.matheustavaresgameapi.model.domain.RentalOrder;
+
 
 public class RentalOrderTest {
     @BeforeEach
