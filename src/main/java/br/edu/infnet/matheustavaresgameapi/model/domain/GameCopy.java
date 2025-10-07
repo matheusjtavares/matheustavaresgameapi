@@ -1,8 +1,9 @@
 package br.edu.infnet.matheustavaresgameapi.model.domain;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
+
+import br.edu.infnet.matheustavaresgameapi.model.domain.exceptions.GameCopyInvalidException;
 
 public class GameCopy {
     private Integer id;
@@ -15,9 +16,9 @@ public class GameCopy {
 
     public GameCopy(Integer id, String gameTitle, LocalDate ownedSinceDate, String player, BigDecimal rentalPrice,
             boolean isForRental, int maxRentalDays) {
-        this.id = id;
+        setId(id);
+        setOwnedSinceDate(ownedSinceDate);
         this.gameTitle = gameTitle;
-        this.ownedSinceDate = ownedSinceDate;
         this.player = player;
         this.rentalPrice = rentalPrice;
         this.isForRental = isForRental;
@@ -28,6 +29,9 @@ public class GameCopy {
         return id;
     }
     public void setId(Integer id) {
+        if (id <= 0) {
+            throw new GameCopyInvalidException("Id must be greater than 1");
+        }
         this.id = id;
     }
     public String getGameTitle() {
@@ -40,6 +44,9 @@ public class GameCopy {
         return ownedSinceDate;
     }
     public void setOwnedSinceDate(LocalDate ownedSinceDate) {
+        if (ownedSinceDate.isAfter(LocalDate.now())) {
+            throw new GameCopyInvalidException("Cannnot be owned in the future");
+        }
         this.ownedSinceDate = ownedSinceDate;
     }
     public String getPlayer() {
