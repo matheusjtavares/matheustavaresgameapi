@@ -23,7 +23,7 @@ public class RentalOrderTest {
     @DisplayName("Must Calculate Rental Total Price when given valid game copies")
     void mustCalculateRentalPrice_whenRentalCartValid(){
         LocalDate currentDate = LocalDate.now();
-        GameCopy gameCopy1 = new GameCopy(null, null, currentDate, null, null, false, 0);
+        GameCopy gameCopy1 = new GameCopy(1, "Final Fantasy 2",currentDate,"Matheus", new BigDecimal(10), true,10);
         gameCopy1.setId(1);
         gameCopy1.setGameTitle("Final Fantasy");
         gameCopy1.setOwnedSinceDate(currentDate);
