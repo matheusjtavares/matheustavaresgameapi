@@ -18,6 +18,11 @@ public class GameCopyTest {
     @Test
     public void mustThrowGameCopyInvalidException_whenIdIsLessThanOne() {
         assertThrows(GameCopyInvalidException.class,() -> new GameCopy(0, "Final Fantasy",LocalDate.now(),"Matheus", new BigDecimal(10), true,10));
+
+    }
+    
+    @Test
+    public void mustThrowGameCopyInvalidException_whenOwnedDateIsInTheFuture() {
         assertThrows(GameCopyInvalidException.class,() -> new GameCopy(1, "Final Fantasy",LocalDate.ofYearDay(2026, 1),"Matheus", new BigDecimal(10), true,10));
 
     }

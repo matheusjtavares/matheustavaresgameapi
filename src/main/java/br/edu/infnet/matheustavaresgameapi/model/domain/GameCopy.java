@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import br.edu.infnet.matheustavaresgameapi.model.domain.exceptions.GameCopyInvalidException;
 
-public class GameCopy {
+public final class GameCopy {
     private Integer id;
     private String gameTitle;
     private LocalDate ownedSinceDate;
