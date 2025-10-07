@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,7 +39,9 @@ public class RentalOrderServiceTest {
     @DisplayName("Must return false when the total price in cart is less than 0")
     public void mustReturnFalse_whenRentalCartIsEmpty(){
         RentalOrder rentalOrder = new RentalOrder();
+        rentalOrder.setRentalCart(new ArrayList<>());
         RentalOrderService rentalOrderService = new RentalOrderService();
-        assertTrue(rentalOrderService.persistRentalOrder(rentalOrder));
+        assertFalse(rentalOrderService.persistRentalOrder(rentalOrder));
+        
     }
 }
