@@ -7,7 +7,7 @@ public class PlatformQueryResult {
     private String platformName;
     private Long platformId;
     private String platformAlias;
-    private List<String> gamesList;
+    private List<GameTitle> gamesList;
 
     public Long getplatformId() {
         return platformId;
@@ -25,11 +25,11 @@ public class PlatformQueryResult {
         this.platformAlias = platformAlias;
     }
 
-    public List<String> getGamesList() {
+    public List<GameTitle> getGamesList() {
         return gamesList;
     }
 
-    public void setGamesList(List<String> gamesList) {
+    public void setGamesList(List<GameTitle> gamesList) {
         this.gamesList = gamesList;
     }
 

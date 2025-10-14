@@ -4,20 +4,13 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class GameTitle {
-    private String name;
+    private String game_title;
     private String publisher;
     private LocalDate releaseDate;
     private Float version;
     private Boolean isActive;
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
     public String getPublisher() {
         return publisher;
     }
@@ -41,6 +34,14 @@ public class GameTitle {
     }
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public String getGame_title() {
+        return game_title;
+    }
+
+    public void setGame_title(String game_title) {
+        this.game_title = game_title;
     }
 
 
