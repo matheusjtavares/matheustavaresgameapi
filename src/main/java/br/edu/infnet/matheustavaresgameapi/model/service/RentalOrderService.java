@@ -1,4 +1,4 @@
-package br.edu.infnet.matheustavaresgameapi.model.domain.service;
+package br.edu.infnet.matheustavaresgameapi.model.service;
 
 import java.util.List;
 

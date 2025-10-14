@@ -5,15 +5,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import br.edu.infnet.matheustavaresgameapi.model.domain.GameCopy;
 import br.edu.infnet.matheustavaresgameapi.model.domain.RentalOrder;
-import br.edu.infnet.matheustavaresgameapi.model.domain.service.RentalOrderService;
+import br.edu.infnet.matheustavaresgameapi.model.service.RentalOrderService;
 
 public class RentalOrderServiceTest {
     @BeforeEach
