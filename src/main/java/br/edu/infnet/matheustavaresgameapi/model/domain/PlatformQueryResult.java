@@ -4,24 +4,25 @@ import java.util.List;
 
 public class PlatformQueryResult {
 
-    private Long plaftformId;
-    private String plaftformAlias;
+    private String platformName;
+    private Long platformId;
+    private String platformAlias;
     private List<String> gamesList;
 
-    public Long getPlaftformId() {
-        return plaftformId;
+    public Long getplatformId() {
+        return platformId;
     }
 
-    public void setPlaftformId(Long plaftformId) {
-        this.plaftformId = plaftformId;
+    public void setplatformId(Long platformId) {
+        this.platformId = platformId;
     }
 
-    public String getPlaftformAlias() {
-        return plaftformAlias;
+    public String getplatformAlias() {
+        return platformAlias;
     }
 
-    public void setPlaftformAlias(String plaftformAlias) {
-        this.plaftformAlias = plaftformAlias;
+    public void setplatformAlias(String platformAlias) {
+        this.platformAlias = platformAlias;
     }
 
     public List<String> getGamesList() {
@@ -31,6 +32,15 @@ public class PlatformQueryResult {
     public void setGamesList(List<String> gamesList) {
         this.gamesList = gamesList;
     }
+
+    public String getPlatformName() {
+        return platformName;
+    }
+
+    public void setPlatformName(String platformName) {
+        this.platformName = platformName;
+    }
+
     
 
 }
