@@ -19,10 +19,5 @@
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
         </dependency>
-
-		<dependency>
-			<groupId>br.edu.infnet.games</groupId>
-			<artifactId>external-api</artifactId>
-		</dependency>
 	</dependencies>
 </project>
