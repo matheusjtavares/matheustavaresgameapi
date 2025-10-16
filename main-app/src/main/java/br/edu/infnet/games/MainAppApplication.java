@@ -1,4 +1,4 @@
-package br.edu.infnet.main_app;
+package br.edu.infnet.games;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

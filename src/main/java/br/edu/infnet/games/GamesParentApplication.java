@@ -1,13 +1,13 @@
-package br.edu.infnet.external_api;
+package br.edu.infnet.games;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExternalApiApplication {
+public class GamesParentApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ExternalApiApplication.class, args);
+		SpringApplication.run(GamesParentApplication.class, args);
 	}
 
 }
