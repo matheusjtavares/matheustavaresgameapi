@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.infnet.matheustavaresgameapi.model.domain.GameTitle;
 import br.edu.infnet.matheustavaresgameapi.model.domain.Platform;
 import br.edu.infnet.matheustavaresgameapi.model.service.PlatformService;
 
@@ -23,7 +24,18 @@ public class PlatformController {
     @GetMapping("byName/{name}")
     public ResponseEntity<List<Platform>> getPlatformsByName(@PathVariable String name) {
         List<Platform> platforms = platformService.getPlatformsByName(name);
+        if(platforms.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
         return ResponseEntity.ok(platforms);
     }
-    
+
+    @GetMapping("getPlatformGamesByID/{id}")
+    public ResponseEntity<List<GameTitle>> getPlatformsByID(@PathVariable Long id) {
+        List<GameTitle> gameTitles = platformService.getGamesbyAPIPlatformID(id);
+        if(gameTitles.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(gameTitles);
+    }
 }

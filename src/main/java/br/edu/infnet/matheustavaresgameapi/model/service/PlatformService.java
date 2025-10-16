@@ -31,11 +31,11 @@ public class PlatformService {
         List<Platform> platforms = data.getPlatforms();
         return platforms;
     }
-    public PlatformQueryResult getGamesbyPlatform(String platformName){
+    public PlatformQueryResult getGamesbyPlatformName(String platformName){
         // Validate platformName
 
         // Get platforms, api returns a list within the data field of the response
-        PlatformResponse response = gameDBFeignClient.findPlatformsByName("Sega Game Gear");
+        PlatformResponse response = gameDBFeignClient.findPlatformsByName(platformName);
 
         PlatformDataWrapper data = response.getData();
         List<Platform> platforms = data.getPlatforms();
@@ -56,5 +56,12 @@ public class PlatformService {
         platformQueryResult.setplatformId(platform.getId());
         platformQueryResult.setGamesList(gameTitles);
         return platformQueryResult;
+    }
+    public List<GameTitle> getGamesbyAPIPlatformID(Long id){
+        PlatformGamesResponse platformGamesResponse = gameDBFeignClient.findGamesByPlatformID(id);
+        PlatformGamesDataWrapper gamesData = platformGamesResponse.getData();
+        List<GameTitle> gameTitles = gamesData.getGames();
+        return gameTitles;
+        
     }
 }
