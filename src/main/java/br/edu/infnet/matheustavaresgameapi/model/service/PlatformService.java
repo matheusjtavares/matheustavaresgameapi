@@ -24,6 +24,13 @@ public class PlatformService {
         this.gameDBFeignClient = gameDBFeignClient;
     }
 
+    public List<Platform> getPlatformsByName(String platformName){
+        // Get platforms, api returns a list within the data field of the response
+        PlatformResponse response = gameDBFeignClient.findPlatformsByName(platformName);
+        PlatformDataWrapper data = response.getData();
+        List<Platform> platforms = data.getPlatforms();
+        return platforms;
+    }
     public PlatformQueryResult getGamesbyPlatform(String platformName){
         // Validate platformName
 
