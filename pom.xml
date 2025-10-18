@@ -1,31 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>br.edu.infnet.games</groupId>
-	<artifactId>games-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>games-parent</name>
-	<description>Demo project for Spring Boot</description>
-	<packaging>pom</packaging>
-	
-	<properties>
-		<java.version>21</java.version>
-		<spring-boot.version>3.2.5</spring-boot.version>
+    <groupId>br.edu.infnet.games</groupId>
+    <artifactId>games-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>common-domain</module>
+        <module>external-api</module>
+        <module>main-app</module>
+    </modules>
+
+    <properties>
+        <java.version>21</java.version>
+        <spring.boot.version>3.3.4</spring.boot.version>
 		<spring-cloud.version>2023.0.3</spring-cloud.version>
-	</properties>
+    </properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>${spring-boot.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot BOM for version alignment -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
@@ -33,24 +38,30 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+        </dependencies>
+    </dependencyManagement>
 
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>common-domain</artifactId>
-				<version>${project.version}</version>
-			</dependency>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- Spring Boot Maven plugin -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
 
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>external-api</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+                <!-- Compiler configuration -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.11.0</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
-	<modules>
-		<module>common-domain</module>
-		<module>external-api</module>
-		<module>main-app</module>
-	</modules>
 </project>

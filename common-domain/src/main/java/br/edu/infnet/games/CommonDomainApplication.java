@@ -1,13 +1,8 @@
-// package br.edu.infnet.games;
+package br.edu.infnet.games;
 
-// import org.springframework.boot.SpringApplication;
-// import org.springframework.boot.autoconfigure.SpringBootApplication;
+public class CommonDomainApplication {
 
-// @SpringBootApplication
-// public class CommonDomainApplication {
+	public static void main(String[] args) {
+	}
 
-// 	public static void main(String[] args) {
-// 		SpringApplication.run(CommonDomainApplication.class, args);
-// 	}
-
-// }
+}

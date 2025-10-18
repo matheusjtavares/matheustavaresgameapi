@@ -11,13 +11,14 @@ import jakarta.persistence.Id;
 public class GameTitle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
     private String name;
     private String publisher;
-    private Platform platform;
+    private Long platform;
     private LocalDate releaseDate;
     private Float version;
     private Boolean isActive;
+    private String game_title;
 
 
     @Override
@@ -26,5 +27,83 @@ public class GameTitle {
         return String.format(formatString, name,publisher,platform,releaseDate,version);
     }
 
+
+    public int getId() {
+        return id;
+    }
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+
+    public Long getPlatform() {
+        return platform;
+    }
+
+
+    public void setPlatform(Long platform) {
+        this.platform = platform;
+    }
+
+
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+
+    public Float getVersion() {
+        return version;
+    }
+
+
+    public void setVersion(Float version) {
+        this.version = version;
+    }
+
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
+
+    public String getGame_title() {
+        return game_title;
+    }
+
+    public void setGame_title(String game_title) {
+        this.game_title = game_title;
+    }
 }
 
