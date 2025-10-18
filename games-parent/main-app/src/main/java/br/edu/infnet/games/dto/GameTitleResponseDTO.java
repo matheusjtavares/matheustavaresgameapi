@@ -1,132 +1,79 @@
-package br.edu.infnet.games.model.domain;
+package br.edu.infnet.games.dto;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import br.edu.infnet.games.model.domain.GameTitle;
+import br.edu.infnet.games.model.domain.Platform;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-
-@Entity
-@JsonIgnoreProperties(ignoreUnknown=true)
-public class GameTitle {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class GameTitleResponseDTO {
     private int id;
-    @Column(nullable = false, unique=true,length = 100)
     private String name;
-    @Column(unique=false, nullable = true)
     private String publisher;
-
-    @Column(unique=false, nullable = true)
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "platform_id")
-    @JsonBackReference("platform-gameTitles")
     private Platform platform;
-
-    @Column(unique=false, nullable = true)
     private LocalDate releaseDate;
-    @Column(unique=false, nullable = true)
     private Float version;
-    @Column(unique=false, nullable = true)
     private Boolean isActive;
-    @Column(unique=false, nullable = true)
     private String game_title;
-
-    @Override
-    public String toString() {
-        String formatString = " Title: %s%n Publisher: %s%n Platform: %s%n Release Date: %s%n Version: % .1f" ;
-        return String.format(formatString, name,publisher,platform,releaseDate,version);
+    
+    public GameTitleResponseDTO(GameTitle gameTitle) {
+        gameTitle.setId(gameTitle.getId());
+        gameTitle.setName(gameTitle.getName());
+        gameTitle.setPublisher(gameTitle.getPublisher());
+        gameTitle.setPlatform(gameTitle.getPlatform());
+        gameTitle.setReleaseDate(gameTitle.getReleaseDate());
+        gameTitle.setVersion(gameTitle.getVersion());
+        gameTitle.setIsActive(gameTitle.getIsActive());
+        gameTitle.setGame_title(gameTitle.getGame_title());
     }
-
-
     public int getId() {
         return id;
     }
-
-
     public void setId(int id) {
         this.id = id;
     }
-
-
     public String getName() {
         return name;
     }
-
-
     public void setName(String name) {
         this.name = name;
     }
-
-
     public String getPublisher() {
         return publisher;
     }
-
-
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
-
-
     public Platform getPlatform() {
         return platform;
     }
-
-
     public void setPlatform(Platform platform) {
         this.platform = platform;
     }
-
-
     public LocalDate getReleaseDate() {
         return releaseDate;
     }
-
-
     public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
-
-
     public Float getVersion() {
         return version;
     }
-
-
     public void setVersion(Float version) {
         this.version = version;
     }
-
-
     public Boolean getIsActive() {
         return isActive;
     }
-
-
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
     }
-
-
     public String getGame_title() {
         return game_title;
     }
-
     public void setGame_title(String game_title) {
         this.game_title = game_title;
     }
 
-    public void setpublisher(String publisher) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+
 }
 
