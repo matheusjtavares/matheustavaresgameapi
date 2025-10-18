@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.edu.infnet</groupId>
-	<artifactId>matheustavaresgameapi</artifactId>
+	<artifactId>games-external-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>matheustavaresgameapi</name>
+	<name>games-external-api</name>
 	<description>Projeto Api for Games</description>
 	<url/>
 	<licenses>
