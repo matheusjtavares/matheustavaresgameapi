@@ -2,24 +2,43 @@ package br.edu.infnet.games.model.domain;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class GameTitle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false, unique=true,length = 100)
     private String name;
+    @Column(unique=false, nullable = true)
     private String publisher;
-    private Long platform;
-    private LocalDate releaseDate;
-    private Float version;
-    private Boolean isActive;
-    private String game_title;
 
+    @Column(unique=false, nullable = true)
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "platform_id")
+    @JsonBackReference("platform-gameTitles")
+    private Platform platform;
+
+    @Column(unique=false, nullable = true)
+    private LocalDate releaseDate;
+    @Column(unique=false, nullable = true)
+    private Float version;
+    @Column(unique=false, nullable = true)
+    private Boolean isActive;
+    @Column(unique=false, nullable = true)
+    private String game_title;
 
     @Override
     public String toString() {
@@ -58,12 +77,12 @@ public class GameTitle {
     }
 
 
-    public Long getPlatform() {
+    public Platform getPlatform() {
         return platform;
     }
 
 
-    public void setPlatform(Long platform) {
+    public void setPlatform(Platform platform) {
         this.platform = platform;
     }
 

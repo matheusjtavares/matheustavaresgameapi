@@ -1,4 +1,4 @@
-package br.edu.infnet.games.controller;
+package br.edu.infnet.games.controllers;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class PlatformController {
     }
 
     @GetMapping("getPlatformGamesByID/{id}")
-    public ResponseEntity<List<GameTitle>> getPlatformsByID(@PathVariable("id") Long id) {
+    public ResponseEntity<List<GameTitle>> getPlatformsByID(@PathVariable("id") Integer id) {
         List<GameTitle> gameTitles = platformService.getGamesbyAPIPlatformID(id);
         if(gameTitles.isEmpty()){
             return ResponseEntity.noContent().build();

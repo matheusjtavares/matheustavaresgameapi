@@ -42,7 +42,7 @@ public class PlatformService {
 
         Platform platform = platforms.get(0); // for example
         // Get Games By Platform
-        Long platformId = platform.getId();
+        Integer platformId = platform.getId();
         PlatformGamesResponse platformGamesResponse = gameDBFeignClient.findGamesByPlatformID(platformId);
 
         PlatformGamesDataWrapper gamesData = platformGamesResponse.getData();
@@ -57,7 +57,7 @@ public class PlatformService {
         platformQueryResult.setGamesList(gameTitles);
         return platformQueryResult;
     }
-    public List<GameTitle> getGamesbyAPIPlatformID(Long id){
+    public List<GameTitle> getGamesbyAPIPlatformID(Integer id){
         PlatformGamesResponse platformGamesResponse = gameDBFeignClient.findGamesByPlatformID(id);
         PlatformGamesDataWrapper gamesData = platformGamesResponse.getData();
         List<GameTitle> gameTitles = gamesData.getGames();

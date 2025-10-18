@@ -14,6 +14,6 @@ public interface GameDBFeignClient {
     PlatformResponse findPlatformsByName(@RequestParam("name") String name);
 
     @GetMapping("/v1/Games/ByPlatformID?apikey=${api.theGamesDb.key}")
-    PlatformGamesResponse findGamesByPlatformID(@RequestParam("id") Long id);
+    PlatformGamesResponse findGamesByPlatformID(@RequestParam("id") Integer id);
 
 }

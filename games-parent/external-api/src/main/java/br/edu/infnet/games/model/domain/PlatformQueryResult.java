@@ -5,15 +5,15 @@ import java.util.List;
 public class PlatformQueryResult {
 
     private String platformName;
-    private Long platformId;
+    private Integer platformId;
     private String platformAlias;
     private List<GameTitle> gamesList;
 
-    public Long getplatformId() {
+    public Integer getplatformId() {
         return platformId;
     }
 
-    public void setplatformId(Long platformId) {
+    public void setplatformId(Integer platformId) {
         this.platformId = platformId;
     }
 
