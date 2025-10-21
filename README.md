@@ -2,8 +2,8 @@
 
 ## ⚙️ Funcionalidade Desenvolvida
 
-### 🧠 **Arquitetura de aplicação**
-Monólito modular com 3 modulos abaixo de games-parent
+### 🧠 **Arquitetura**
+Monólito modular com 3 modulos abaixo de games-parent, com integração de api externa para consulta e consumo de dados para o banco H2. Rotas com autenticação básica seguindo protocolo de basicAuth
 ---
 
 ## 🏗️ Principais Classes de Modelo e Modulos da aplicação
