@@ -12,6 +12,8 @@ import br.edu.infnet.games.clients.entities.PlatformDataWrapper;
 import br.edu.infnet.games.clients.entities.PlatformGamesDataWrapper;
 import br.edu.infnet.games.clients.entities.PlatformGamesResponse;
 import br.edu.infnet.games.clients.entities.PlatformResponse;
+import br.edu.infnet.games.dto.PlatformRequestDTO;
+import br.edu.infnet.games.dto.PlatformResponseDTO;
 import br.edu.infnet.games.model.domain.GameTitle;
 import br.edu.infnet.games.model.domain.Platform;
 import br.edu.infnet.games.model.domain.PlatformQueryResult;
@@ -71,7 +73,51 @@ public class PlatformService {
         
     }
 
-    public Platform alterar(Integer id, Platform platform) {
+    // Create a platform
+    public PlatformResponseDTO createPlatform(PlatformRequestDTO dto) {
+        Platform platform = new Platform();
+        platform.setName(dto.getName());
+        platform.setManufacturer(dto.getManufacturer());
+        platform.setReleaseDate(dto.getReleaseDate());
+        platform.setPrice(dto.getPrice());
+        platform.setHandheld(dto.isHandheld());
+        platform.setActive(dto.isActive());
+        platform.setAlias(dto.getAlias());
+
+        Platform saved = platformRepository.save(platform);
+
+        PlatformResponseDTO response = new PlatformResponseDTO();
+        response.setId(saved.getId());
+        response.setName(saved.getName());
+        response.setManufacturer(saved.getManufacturer());
+        response.setReleaseDate(saved.getReleaseDate());
+        response.setPrice(saved.getPrice());
+        response.setHandheld(saved.isHandheld());
+        response.setActive(saved.isActive());
+        response.setAlias(saved.getAlias());
+        response.setGameTitles(saved.getGameTitles());
+
+        return response;
+    }
+
+    public List<PlatformResponseDTO> getAllPlatforms() {
+        return platformRepository.findAll().stream().map(platform -> {
+            PlatformResponseDTO dto = new PlatformResponseDTO();
+            dto.setId(platform.getId());
+            dto.setName(platform.getName());
+            dto.setManufacturer(platform.getManufacturer());
+            dto.setReleaseDate(platform.getReleaseDate());
+            dto.setPrice(platform.getPrice());
+            dto.setHandheld(platform.isHandheld());
+            dto.setActive(platform.isActive());
+            dto.setAlias(platform.getAlias());
+            dto.setGameTitles(platform.getGameTitles());
+            return dto;
+        }).toList();
+    }
+
+
+    public Platform alter(Integer id, Platform platform) {
         Platform platformExisting = platformRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Platform not found."));
 
@@ -81,21 +127,21 @@ public class PlatformService {
         return platformRepository.save(platformExisting);
     }
 
-    public void excluir(Integer id) {
+    public void delete(Integer id) {
         if (!platformRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Platform not found.");
         }
         platformRepository.deleteById(id);
     }
 
-    public void desativar(Integer id) {
+    public void deactivate(Integer id) {
         Platform platform = platformRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Platform not found."));
         platform.setActive(false);
         platformRepository.save(platform);
     }
 
-    public void ativar(Integer id) {
+    public void activate(Integer id) {
         Platform platform = platformRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Platform not found."));
         platform.setActive(true);
@@ -106,5 +152,20 @@ public class PlatformService {
             throw new IllegalArgumentException("The id cannot be provided");
         }
         return platformRepository.save(platform);
+    }
+    public PlatformResponseDTO findById(Integer id) {
+        Platform platform = platformRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Platform not found."));
+        PlatformResponseDTO dto = new PlatformResponseDTO();
+        dto.setId(platform.getId());
+        dto.setName(platform.getName());
+        dto.setManufacturer(platform.getManufacturer());
+        dto.setReleaseDate(platform.getReleaseDate());
+        dto.setPrice(platform.getPrice());
+        dto.setHandheld(platform.isHandheld());
+        dto.setActive(platform.isActive());
+        dto.setAlias(platform.getAlias());
+        dto.setGameTitles(platform.getGameTitles());
+        return dto;
     }
 }

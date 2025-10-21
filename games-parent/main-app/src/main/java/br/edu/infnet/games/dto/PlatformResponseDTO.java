@@ -1,5 +1,9 @@
 package br.edu.infnet.games.dto;
-import br.edu.infnet.games.model.domain.Platform;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.edu.infnet.games.model.domain.GameTitle;
 
 public  class PlatformResponseDTO {
     private Integer id;
@@ -7,18 +11,11 @@ public  class PlatformResponseDTO {
     private String manufacturer;
     private double price;
     private boolean isHandheld;
+    private LocalDate releaseDate;
     private boolean isActive = true;
     private String alias;
-    
-    public PlatformResponseDTO(Platform platform) {
-        this.setId(platform.getId());
-        this.setName(platform.getName());
-        this.setManufacturer(platform.getManufacturer());
-        this.setPrice(platform.getPrice());
-        this.setHandheld(platform.isHandheld());
-        this.setActive(platform.isActive());
-        this.setAlias(platform.getAlias());
-    }
+    private List<GameTitle> gameTitles = new ArrayList<>();
+
 
     public Integer getId() {
         return id;
@@ -61,6 +58,22 @@ public  class PlatformResponseDTO {
     }
     public void setAlias(String alias) {
         this.alias = alias;
+    }
+
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public List<GameTitle> getGameTitles() {
+        return gameTitles;
+    }
+
+    public void setGameTitles(List<GameTitle> gameTitles) {
+        this.gameTitles = gameTitles;
     }
 
 }
