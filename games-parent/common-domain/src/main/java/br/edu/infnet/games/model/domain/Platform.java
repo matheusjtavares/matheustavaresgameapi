@@ -38,7 +38,7 @@ public class Platform {
     private boolean isActive;
 
     @OneToMany(mappedBy="platform",cascade=CascadeType.ALL, orphanRemoval=true,fetch=FetchType.LAZY)
-    @JsonManagedReference(value = "platform-gameTitles")
+    @JsonManagedReference(value = "platform-gameTitles")   
     private List<GameTitle> gameTitles = new ArrayList<>();
     private String alias;
 
@@ -47,7 +47,12 @@ public class Platform {
         String formatString = " Name: %s%n Manufacurer: %s%n Release Date: %s%n Price: % .2f%n Type: %s";
         return String.format(formatString, name,manufacturer,releaseDate,price, (isHandheld == true) ? "Handheld" :"Desk");
     }
+    public Platform() {
+    }
 
+    public Platform(Integer id) {
+        this.id = id;
+    }
     public Integer getId() {
         return id;
     }

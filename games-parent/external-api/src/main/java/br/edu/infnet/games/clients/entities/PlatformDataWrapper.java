@@ -2,8 +2,11 @@ package br.edu.infnet.games.clients.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import br.edu.infnet.games.model.domain.Platform;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PlatformDataWrapper {
     private Integer count;
     private List<Platform> platforms;

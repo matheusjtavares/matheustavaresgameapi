@@ -1,5 +1,8 @@
 package br.edu.infnet.games.clients.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PlatformGamesResponse {
     private Integer code;
     private String status;

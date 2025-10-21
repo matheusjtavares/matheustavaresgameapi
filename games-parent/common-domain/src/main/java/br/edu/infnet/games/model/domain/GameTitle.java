@@ -11,7 +11,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -25,9 +24,7 @@ public class GameTitle {
     @Column(unique=false, nullable = true)
     private String publisher;
 
-    @Column(unique=false, nullable = true)
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "platform_id")
     @JsonBackReference("platform-gameTitles")
     private Platform platform;
 
@@ -123,10 +120,6 @@ public class GameTitle {
 
     public void setGame_title(String game_title) {
         this.game_title = game_title;
-    }
-
-    public void setpublisher(String publisher) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
 
