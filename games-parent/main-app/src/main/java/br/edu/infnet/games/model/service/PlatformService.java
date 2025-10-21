@@ -168,4 +168,18 @@ public class PlatformService {
         dto.setGameTitles(platform.getGameTitles());
         return dto;
     }
+    public PlatformResponseDTO findByName(String name) {
+        Platform platform = platformRepository.findByName(name);
+        PlatformResponseDTO dto = new PlatformResponseDTO();
+        dto.setId(platform.getId());
+        dto.setName(platform.getName());
+        dto.setManufacturer(platform.getManufacturer());
+        dto.setReleaseDate(platform.getReleaseDate());
+        dto.setPrice(platform.getPrice());
+        dto.setHandheld(platform.isHandheld());
+        dto.setActive(platform.isActive());
+        dto.setAlias(platform.getAlias());
+        dto.setGameTitles(platform.getGameTitles());
+        return dto;
+    }
 }
