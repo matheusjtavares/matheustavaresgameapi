@@ -51,7 +51,6 @@ public class Platform {
     }
 
     public Platform(Integer id) {
-        this.id = id;
     }
     public Integer getId() {
         return id;
