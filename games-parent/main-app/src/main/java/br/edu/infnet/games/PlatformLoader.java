@@ -3,21 +3,26 @@ package br.edu.infnet.games;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.games.model.domain.GameTitle;
 import br.edu.infnet.games.model.domain.Platform;
+import br.edu.infnet.games.model.service.GameTitleService;
 import br.edu.infnet.games.model.service.PlatformService;
 
 @Component("platformLoader")
 @Order(1)
 public class PlatformLoader implements ApplicationRunner {
     private final PlatformService platformService;
-    public PlatformLoader(PlatformService platformService){
+    private final GameTitleService gameTitleService;
+    public PlatformLoader(PlatformService platformService,GameTitleService gameTitleService){
         this.platformService = platformService;
+        this.gameTitleService = gameTitleService;
     }
     
     @Override
@@ -36,8 +41,17 @@ public class PlatformLoader implements ApplicationRunner {
             platform.setReleaseDate(LocalDate.parse(fields[2]));
             platform.setPrice(Double.parseDouble(fields[3]));
             platform.setHandheld(Boolean.parseBoolean(fields[4]));
+            List<GameTitle> gameTitles = platformService.getGamesbyPlatformName(fields[0]).getGamesList();
+
             platformService.include(platform);
             line = reader.readLine();
+            gameTitles.stream().forEach(gameTitle -> {
+                gameTitle.setId(null);
+                gameTitle.setName(gameTitle.getGame_title());
+                gameTitle.setPlatform(platform);
+                gameTitle.setIsActive(true);
+                gameTitleService.include(gameTitle);
+            });
         }
 
         reader.close();

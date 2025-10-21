@@ -18,8 +18,8 @@ import jakarta.persistence.ManyToOne;
 public class GameTitle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(nullable = false, unique=true,length = 100)
+    private Integer id;
+    @Column(nullable = false, unique=false,length = 100)
     private String name;
     @Column(unique=false, nullable = true)
     private String publisher;
@@ -44,12 +44,12 @@ public class GameTitle {
     }
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
