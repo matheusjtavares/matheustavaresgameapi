@@ -38,3 +38,33 @@ A seguir, os  testes criados para garantir a robustez da nova funcionalidade.
 | **"Must return true when the total price in cart is greater than 0" ** | Valida a persistência da rentalOrder | **Red:** teste criado antes da implementação; falhou pois a função não existia. **Green:** implementação corrigiu a falha. |
 | **"Must return false when the total price in cart is less than 0" ** | Valida a persistência da rentalOrder | **Red:** teste criado antes da implementação; falhou pois a função não existia. **Green:** implementação corrigiu a falha. |
 
+
+## 🤖 Postman Collection
+
+You can explore and test the API endpoints via the shared Postman
+workspace:\
+[Game Sharing Platform API
+(Postman)](https://planetary-flare-256668.postman.co/workspace/Infnet-Springboot~a289eb5a-c4ef-4cf7-a5d8-e310d62bd091/collection/47974878-a6f2167a-ad19-4f15-84ec-e9ca2ff69e01?action=share&creator=47974878)
+
+
+### Prerequisites
+
+-   Java 21+
+-   Maven 3.8+
+-   Spring Boot 3+
+
+### Running the Application
+
+``` bash
+mvn spring-boot:run
+```
+
+### Accessing the API
+
+Once the app is running, you can access the API at:
+
+    http://localhost:8080/api/platforms
+
+### Users for testing
+    admin:admin123
+    user:user123
